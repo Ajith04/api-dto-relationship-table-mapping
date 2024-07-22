@@ -1,0 +1,6 @@
+@Ajith_HostAddress = http://localhost:5187
+
+GET {{Ajith_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
