@@ -30,7 +30,7 @@ namespace Ajith.Services
                 foreach(var item in studentrequestdto.Subject)
                 {
                     var subject = new Subject();
-                    subject.StuId = data.StuId;
+                    subject.StudentStuId = studentrequest.StuId;
                     subject.SubName = item.Name;
                     requestsubjectlist.Add(subject);
                 }
@@ -42,6 +42,7 @@ namespace Ajith.Services
                 foreach (var item in subdata)
                 {
                     var subjectresponse = new SubjectResponseDTO();
+                    subjectresponse.SubId = item.SubId;
                     subjectresponse.Name = item.SubName;
                     subjectresponselist.Add(subjectresponse);
 

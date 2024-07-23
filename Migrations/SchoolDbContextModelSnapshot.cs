@@ -43,6 +43,40 @@ namespace Ajith.Migrations
 
                     b.ToTable("Students");
                 });
+
+            modelBuilder.Entity("Ajith.Database.Subject", b =>
+                {
+                    b.Property<Guid>("SubId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentStuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SubName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubId");
+
+                    b.HasIndex("StudentStuId");
+
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("Ajith.Database.Subject", b =>
+                {
+                    b.HasOne("Ajith.Database.Student", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("StudentStuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Ajith.Database.Student", b =>
+                {
+                    b.Navigation("Subjects");
+                });
 #pragma warning restore 612, 618
         }
     }
